@@ -1,4 +1,4 @@
-# CloudResearch
+# HippoWeexDemo
 
 ## How to start
 
