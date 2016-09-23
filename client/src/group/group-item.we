@@ -1,0 +1,6 @@
+<template>
+	<div style="flex-direction: row;">
+		<text>1</text>
+		<text>1</text>
+	</div>
+</template>

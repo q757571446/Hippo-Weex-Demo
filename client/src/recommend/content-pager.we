@@ -1,0 +1,93 @@
+<template>
+  <div>
+    <list>
+      <header>
+        <pager-top if="{{bigData.length > 1}}"></pager-top>
+      </header>
+      <cell class="cell" repeat="{{bigData}}" scope="{{tabType}}">
+        <div style="border-color: #fafafa; border-top-width: 20;" >
+          <div if="{{bigData.length > 1}}" class="header">
+            <div style="flex-direction: row; flex: 1;">
+              <image style="width: 40; height: 40; margin-right: 20;" src="{{itemImg}}"></image>
+              <text style="font-size: 28; color: #000; ">{{getBlockTitle(tabType,blockData)}}</text>
+            </div>
+            <image style="width: 28; height: 38;" src="{{iconMore}}"></image>
+          </div>
+          <idea-item if="{{(tabType==0|tabType==5)}}" repeat="{{blockData}}"></idea-item>
+          <activity-item if="{{(tabType==1)}}" repeat="{{blockData}}"></activity-item>
+          <news-item if="{{(tabType==2)}}" repeat="{{blockData}}"></news-item>
+          <report-item if="{{(tabType==3)}}" repeat="{{blockData}}">
+          </report-item>
+          <researcher-item if="{{(tabType==4)}}" repeat="{{blockData}}"></researcher-item> 
+        </div>
+      </cell>
+    </list>
+  </div>
+</template>
+<style>
+  .header {
+    flex-direction: row; 
+    align-items: center; 
+    height: 75;
+    border-top-width: 1.5;
+    border-bottom-width: 1.5;
+    border-color: #f2f2f2; 
+    padding-left: 30; 
+    padding-right: 30;
+  }
+</style>
+
+<script>
+  //维护搜索框，和子布局是否由嵌套tab
+  var api = require('./common/api.js');
+  var stream = require('@weex-module/stream');
+  require('./tab/item/idea-item.we');
+  require('./tab/refresh-header.we');
+  require('./tab/refresh-bottom.we');
+  require('./tab/item/report-item.we');
+  require('./tab/item/activity-item.we');
+  require('./tab/item/researcher-item.we');
+  require('./tab/item/news-item.we');
+  module.exports = {
+    data: {
+      bigData:[],
+      tagName: '默认',
+      tagType: '',
+      childrenTag: [],
+      itemImg: 'app://icon_recommend',
+      iconMore: 'app://icon_more',
+    },
+
+    methods: {
+      getPagerData: function(){
+        console.log('tagName',this.tagName);
+        api.getPagerData(this.tagName,stream, function(ret){
+          this.bigData = ret.bigData;
+        }.bind(this));
+      },
+
+      getBlockTitle: function(tabType,blockData){
+        switch(tabType){
+          case 0:
+          case 5:
+            if(blockData.length>0 && blockData[0].type==7)
+              return "有声观点"
+            return "观点推荐";
+          case 1:
+            return "活动推荐";
+          case 2:
+            return "新闻推荐";
+          case 3:
+            return "研报推荐";
+          case 4:
+            return "分析师推荐"; 
+        }
+      }
+    },
+
+    ready: function(){
+      this.getPagerData();
+    },
+  };
+</script>
+

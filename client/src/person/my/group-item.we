@@ -1,0 +1,48 @@
+<template>
+	<container style="padding-left:  30;  background-color: #fff;">
+		<div style="flex-direction: row; height: 98;align-items: center; justify-content: space-between; padding-right: 30; ">
+			<text class="darkText">{{leftText}}</text>
+			<div style="flex-direction: row;">
+				<image class="icon" src="{{shareImg}}"></image>
+				<text class="grayText">{{rightText.share}}</text>
+				<image class="icon edit" src="{{editImg}}"></image>
+				<text class="grayText">{{rightText.edit}}</text>
+			</div>	
+		</div>>
+		<div style="background-color: #f2f2f2; width: 750; height: 2;">
+     </div>
+	</container>
+</template>>
+<style>
+	.darkText {
+		font-size: 32;
+		color: #000;
+	}
+	.grayText {
+		font-size: 28; 
+		color: #878787;
+	}
+	.icon {
+		width: 32;
+		height: 32;
+		margin-right: 12;
+	}
+	.edit {
+		margin-left: 40;
+	}
+
+</style>
+<script>
+	module.exports = {
+	    data: {
+	    	leftText: '',
+	    	rightText: {
+	    		share: '分享',
+	    		edit: '编辑',
+	    	},
+	    	shareImg: 'android.resource://com.igoldenbeta.cloudresearch/mipmap/icon_share',
+	    	editImg: 'android.resource://com.igoldenbeta.cloudresearch/mipmap/icon_edit_gray',
+	    },
+	}
+
+</script>

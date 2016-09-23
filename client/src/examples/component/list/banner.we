@@ -1,0 +1,40 @@
+<template>
+	<slider class="pager" append="tree">
+      <indicator class="indicator"></indicator>
+      <div class="pager" repeat="{{sliderPages}}">
+		<image style="width: 750; height: 230;" src="{{link}}"></image>
+      </div>
+    </slider>
+</template>
+<style>
+	.indicator {
+		position: absolute;
+		width: 750;
+		height: 20;
+		top: 190;
+		itemSize: 20;
+		itemColor: #000;
+		itemSelectedColor: #fff;
+	}
+	.pager {
+		width: 750;
+		height: 230;
+	}
+</style>
+<script>
+  module.exports = {
+    methods: {
+      
+    },
+
+    data: {
+      sliderPages: [
+      	{link: 'http://scimg.jb51.net/allimg/160815/103-160Q509544OC.jpg'},
+      	{link: 'http://scimg.jb51.net/allimg/160815/103-160Q509544OC.jpg'},
+      	{link: 'http://scimg.jb51.net/allimg/160815/103-160Q509544OC.jpg'},
+      	{link: 'http://scimg.jb51.net/allimg/160815/103-160Q509544OC.jpg'},
+      	{link: 'http://scimg.jb51.net/allimg/160815/103-160Q509544OC.jpg'},
+      ],
+    }
+  }
+</script>

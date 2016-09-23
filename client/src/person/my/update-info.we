@@ -1,0 +1,70 @@
+<template>
+	<div class="container">
+		<div class="header">
+			<text class="textLeft">{{textLeft}}</text>
+			<div class="imgRight">
+				<circle-image image="{{avatar}}"></circle-image>
+				<image style="width: 22; height: 38; resize: contain; margin-left: 30;" src={{imageRight}}></image>
+			</div>
+		</div>
+
+		<div class="footer" repeat="{{v in textItems}}">
+			<text class="textLeft">{{v}}</text>
+			<div class="imgRight">
+				<image style="width: 22; height: 38; resize: contain; margin-left: 30;" src={{imageRight}}></image>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style>
+	.container {
+		background-color: #f2f2f2;
+	}
+	.header {
+		height: 196;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		background-color: #fff;
+		padding-left: 30;
+		padding-right: 30;
+		margin-bottom: 20;
+	}
+		.textLeft {
+			font-size: 32;
+			flex: 1;
+		}
+		.imgRight {
+			flex-direction: row;
+			align-items: center;
+		}
+
+	.footer {
+		height: 135;
+		align-items: center;
+		border-bottom-width: 2;
+		border-color: #e5e5e5;
+		flex-direction: row;
+		background-color: #fff;
+		padding-left: 30;
+		padding-right: 30;
+	}
+
+</style>
+<script>
+	require('../circle-image.we');
+	module.exports = {
+		data: {
+			avatar: 'android.resource://com.igoldenbeta.cloudresearch/mipmap/icon_logo',
+			imageRight:'android.resource://com.igoldenbeta.cloudresearch/mipmap/icon_enter',
+			textLeft: '修改头像',
+			textItems: [
+				'修改绑定手机',
+				'修改密码',
+				'修改认证信息',
+			],
+
+		},
+	}
+</script>

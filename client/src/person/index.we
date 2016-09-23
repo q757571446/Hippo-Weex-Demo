@@ -1,0 +1,193 @@
+<template>
+    <scroller append＝"tree">
+        <div class="header">
+            <div >
+                <image style="position:absolute; top: 56;right: 60;width:36;height:36;" src="{{userInfo.editImg}}" onclick="editInfo"></image>
+                
+                <div style="flex-direction: column; align-items: center; margin-top: 18; margin-bottom: 28;">
+                    <circle-image image="{{userInfo.avatar}}"></circle-image>
+                    <text class="whiteText" style="margin: 15;">{{userInfo.name}}</text>
+                    <text class="grayText" >{{userInfo.department}}</text>
+                </div>
+            </div>
+            <div style="background-color: #6f6f6f; width:750; height: 3;">
+            </div>
+            <div style="flex-direction: row; height: 120; align-items: center;">
+                <div style="flex: 1; align-items: center;">
+                    <text class="whiteText">订阅数量</text>
+                    <text class="grayText">{{countSubscribeMe}}</text>
+                </div>
+                
+                <div style="background-color: #6f6f6f; width:3; height: 80;">
+                </div>
+
+                <div style="flex: 1; align-items: center;">
+                    <text class="whiteText">关注数量</text>
+                    <text class="grayText">{{countMySubscriber}}</text>
+                </div>
+            </div> 
+      </div>
+
+        <div class="content">
+            <div>
+              <option-item repeat="{{options_1}}" image-left="{{imageLeft}}" text-header= "{{textHeader}}" text-bottom= "{{textBottom}}"  url="{{url}}" sub-url="{{subUrl}}"></option-item>
+            </div>
+            
+            <div style="margin-top: 20; ">
+              <option-item repeat="{{options_2}}" image-left="{{imageLeft}}" text-header= "{{textHeader}}" text-bottom= "{{textBottom}}" url="{{url}}"></option-item>
+            </div>
+        </div>
+    </scroller>
+</template>
+<style>
+    .header {
+        background-color: #696969; 
+    }
+        .whiteText {
+            font-size: 30;
+            color: #fff;
+        }
+        .grayText {
+            font-size: 26;
+            color: #d8d8d8;
+        }
+    .content {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<script>
+  require('weex-components');
+  require('./component/title-bar.we');
+  var router = require('../router.js');
+  var navigator = require('@weex-module/WeexNavigator');
+  var stream = require('@weex-module/stream');
+  var urls = require('./common/api.js');
+
+  module.exports = {
+    data: {
+      countMySubscriber: '5',
+      countSubscribeMe: '5',
+      userInfo: {
+        avatar: 'app://icon_logo',
+        editImg: 'app://icon_edit',
+        name: '厉如意',
+        department: '东方机械行业研究所',
+      },
+
+      params: {
+          'title': '我的',
+          'left-item-title': '',
+          'left-item-color' : '',
+          'left-item-image' : '',
+          'right-item-title': '',
+          'right-item-color': '',
+          'right-item-image': 'app://icon_setting',
+      },
+      options_1: [
+        {
+            imageLeft: 'app://icon_group',
+            textHeader: '我的组合',
+            url: '/person/group',
+        },
+        {
+            imageLeft: 'app://icon_idea',
+            textHeader: '我的观点',
+            url: '/person/idea',
+            subUrl: [
+              '/report',
+              '/image',
+              '/voice'
+            ],
+        },
+        {
+            imageLeft: 'app://icon_activity',
+            textHeader: '我的活动',
+            textBottom: '',
+            url: '/person/activity',
+            subUrl: [
+              '/research',
+              '/salon',
+              '/meet'
+            ],
+        },
+        {
+            imageLeft: 'app://icon_activity',
+            textHeader: '我的授权',
+            textBottom: '',
+            url: '/person/activity',
+            subUrl: [
+              '/research',
+              '/salon',
+              '/meet'
+            ],
+        },
+        {
+            imageLeft: 'app://icon_activity',
+            textHeader: '我的申请',
+            textBottom: '',
+            url: '/person/activity',
+            subUrl: [
+              '/research',
+              '/salon',
+              '/meet'
+            ],
+        },
+      ],
+
+      options_2: [
+          {
+              imageLeft: 'app://icon_cloud',
+              textHeader: '我的云盘',
+              textBottom: '',
+              url: '',
+          },
+          {
+              imageLeft: 'app://icon_schedule',
+              textHeader: '活动日程',
+              url: '',
+          },
+          {
+              imageLeft: 'app://icon_schedule',
+              textHeader: '我的路演',
+              url: '',
+          },
+        ],
+    },
+
+
+    events: {
+      onItemClick: function(e){
+        console.log('params',e.detail);
+        navigator.push(e.detail,function(){});
+      }
+    },
+
+    methods: {
+      editInfo: function(){
+        var params = {
+          url: router.getComponent(this, '/person/edit'),
+        };
+        navigator.push(params, function(){});
+      },
+
+
+      jumpSelfHome: function(){
+        // var params = {
+        //   url: router.getComponent(this, '/person/home');
+        // }
+        // navigator.push(params,function(){});
+      },
+    },
+
+    created: function(){
+      var self = this;
+      urls.getHome(stream, function(ret){
+        console.log("ret",ret);
+        // self.countMySubscriber = ret.countMySubscriber;
+        // self.countSubscribeMe = ret.countSubscribeMe;
+        // self.userInfo = ret.userInfo;
+      })
+    },
+  }
+</script>

@@ -1,0 +1,48 @@
+<template>
+	<div>
+		<tab-pager onchange="handleSliderChange">
+			<tab-indicator pager-title="{{titles}}"></tab-indicator>
+			<tab-content repeat="{{tagItems}}">
+				<content-pager id="{{$index+1}}" index="{{$index}}" tag-type="{{tagType}}" tag-name="{{tagName}}" children-tag="{{childrenTag}}"></content-pager>
+			</tab-content>
+		</tab-pager>
+	</div>
+</template>
+
+<script>
+	// var router = require('../router.js');
+	// var api = require('./common/api.js');
+	// var stream = require('@weex-module/stream');
+	// module.exports = {
+	// 	data: {
+	// 		titles: [],
+	// 		tagItems: [],
+	// 	},
+
+	// 	methods: {
+	// 		loadData: function(){
+	// 			//初始化获得标签数据
+	// 			api.getHomeTag(stream, function(ret){
+	// 				//初始化指示器
+	// 				this.titles= this.getPagerTitles(ret.tagItems);
+	// 				this.tagItems = ret.tagItems;
+	// 			}.bind(this));
+	// 		},
+
+	// 		getPagerTitles: function(items) {
+	// 			return items.map(function(item, index) {
+	// 				return item.tagName;
+	// 			});
+	// 		},
+
+	// 		handleSliderChange: function(e) {
+	// 			this.$vm(e.index+1).getPagerData();
+	// 		},
+	// 	},
+
+	// 	ready: function(){
+	// 		this.loadData();
+	// 	}
+	// }
+
+</script>

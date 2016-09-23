@@ -1,0 +1,118 @@
+<template>
+	<card-view class="container" elevation="6">
+		<div class="header">
+			<div class="header_top">
+				<div class="header_top_left">
+					<image style="width: 30; height: 30;" src="{{iconPhone}}"></image>
+					<text style="font-size: 26; color: #fff; margin-left: 10;">电话会议</text>
+				</div>
+				<div class="header_top_right">
+					<image style="width: 20; height: 20;" src="{{iconApply}}"></image>
+					<text style="font-size: 26; color: #fff; margin-left: 10;">报名中</text>
+				</div>
+			</div>
+			<div class="header_bottom">
+				<div class="header_bottom_left">
+					<image style="width: 76; height: 76; margin-right: 20;" src="{{avatar}}"></image>
+				</div>
+				<div class="header_bottom_right">
+					<text style="font-size: 26; color: #fff; lines: 1">广发证券罗洪斌</text>
+					<text style="width: 520; font-size: 32; color: #fff; lines: 1">今日十大机构论市：抓住投资机遇监管层释放重要信号</text>
+				</div>
+			</div>
+		</div>
+		<div class="bottom">
+			<div class="bottom_top">
+				<image style="width: 30; height: 30;" src="{{iconTime}}"></image>
+				<text style="font-size: 30; color: #000; margin-left: 10;">6月12日 （1小时内） 15:30 - 16:10</text>
+			</div>
+			<div class="bottom_bottom">
+				<text class="tag">研报路演</text>
+				<image style="width: 36; height: 36;" src="{{expandMore}}"></image>
+			</div>
+		</div>
+	</card-view>
+</template>
+<style>
+	.container {
+		margin-top: 10;
+		margin-bottom: 10;
+		margin-left: 30;
+		margin-right: 30;
+		border-color: #f2f2f2;
+		border-top-width: 1.5;
+		border-bottom-width: 1.5;
+	}
+	.header {
+		height: 348;
+		padding: 24;
+		background-color: #45666B;
+	}
+		.header_top {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+			.header_top_left {
+				flex-direction: row;
+				background-color: #8ea3a6;
+				height: 46;
+				border-radius: 23;
+				align-items: center;
+				padding-left: 20;
+				padding-right: 20;
+				padding-top: 10;
+				padding-bottom: 10;
+			}
+			.header_top_right{
+				flex-direction: row;
+				align-items: center;
+				height: 46;
+			}
+		.header_bottom {
+			flex-direction: row;
+			align-items: center;
+			position: absolute;
+			bottom: 30;
+		}
+			.header_bottom_right {
+				height: 90;
+				justify-content: space-between;
+			}
+
+	.bottom {
+		align-items: center;
+		padding-top: 30;
+		padding-bottom: 30;
+	}
+		.bottom_top {
+			flex-direction: row;
+			align-items: center;
+		}
+		.bottom_bottom {
+			flex-direction: row;
+			margin-top: 30;
+		}
+			.tag {
+				font-size: 20;
+				color: #ff754b;
+				height: 36;
+				border-color: #ff754b;
+				border-radius: 18;
+				border-width: 2;
+				margin-right: 20;
+				padding-left: 10;
+				padding-right: 10;
+			}
+</style>
+<script>
+	module.exports = {
+	    data: {
+	    	iconPhone: 'app://icon_phone',
+	      	iconApply: 'app://icon_apply',
+	      	commentImg: 'app://icon_comment',
+	      	avatar: 'app://icon_logo',
+	      	iconTime: 'app://icon_time',
+	      	expandMore: 'app://expand_more',
+	    },
+	}
+</script>

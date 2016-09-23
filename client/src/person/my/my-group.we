@@ -1,0 +1,29 @@
+<template>
+  <div style="background-color: #f2f2f2; padding-top: 40;">
+      <group-item repeat="{{groups}}" left-text="{{groupName}}">
+      </group-item>
+  </div>
+
+</template> 
+<style>
+
+</style>
+
+<script>
+    module.exports = {
+      data: {
+        groups: [
+          {groupName: '超低组合'},
+          {groupName: '东方不败'},
+          {groupName: '超低组合'},
+          {groupName: '东方不败'},
+          {groupName: '超低组合'},
+          {groupName: '东方不败'},
+          {groupName: '超低组合'},
+          {groupName: '东方不败'},
+          {groupName: '超低组合'},
+        ],
+      },
+    }
+
+</script>

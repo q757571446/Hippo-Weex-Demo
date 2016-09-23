@@ -1,0 +1,44 @@
+<template>
+	<div class="container">
+		<circle-image radius="43" image="{{avatar}}"></circle-image>
+		<div class="content">
+			<text style="font-size: 32; color: #000;">{{name}}</text>
+			<text style="width: 450; lines: 1; font-size: 28; color: #789DAO;">{{company+jobTitle}}</text>
+		</div>
+		<div class="subscribe">
+		</div>
+	</div>
+</template>
+<style>
+	.container {
+		flex-direction: row;
+		align-items: center;
+		padding: 30;
+		border-color: #f2f2f2;
+		border-top-width: 1.5;
+		border-bottom-width: 1.5;
+	}
+	.content {
+		height: 90;
+		margin-left: 20;
+		justify-content: space-between;
+	}
+	.subscribe {
+		background-color: #f39c12;
+		width: 90;
+		height: 50;
+		position: absolute;
+		right: 30;
+		top: 44;
+		bottom: 44;
+		border-radius: 5;
+	}
+</style>
+<script>
+	require('../../../person/circle-image.we');
+	module.exports = {
+	    data: {
+	    	
+	    },
+	}
+</script>

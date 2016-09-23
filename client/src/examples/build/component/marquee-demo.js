@@ -1,0 +1,171 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId])
+/******/ 			return installedModules[moduleId].exports;
+
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			exports: {},
+/******/ 			id: moduleId,
+/******/ 			loaded: false
+/******/ 		};
+
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+
+/******/ 		// Flag the module as loaded
+/******/ 		module.loaded = true;
+
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+
+
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ 0:
+/***/ function(module, exports, __webpack_require__) {
+
+	var __weex_template__ = __webpack_require__(26)
+	var __weex_script__ = __webpack_require__(27)
+
+	__weex_define__('@weex-component/eeaccd3d9c9113871c5ec6aa21c1c2cd', [], function(__weex_require__, __weex_exports__, __weex_module__) {
+
+	    __weex_script__(__weex_module__, __weex_exports__, __weex_require__)
+	    if (__weex_exports__.__esModule && __weex_exports__.default) {
+	      __weex_module__.exports = __weex_exports__.default
+	    }
+
+	    __weex_module__.exports.template = __weex_template__
+
+	})
+
+	__weex_bootstrap__('@weex-component/eeaccd3d9c9113871c5ec6aa21c1c2cd',undefined,undefined)
+
+/***/ },
+
+/***/ 4:
+/***/ function(module, exports) {
+
+	
+
+/***/ },
+
+/***/ 26:
+/***/ function(module, exports) {
+
+	module.exports = {
+	  "type": "scroller",
+	  "children": [
+	    {
+	      "type": "wxc-panel",
+	      "attr": {
+	        "title": "Marquee",
+	        "type": "primary"
+	      },
+	      "children": [
+	        {
+	          "type": "wxc-marquee",
+	          "id": "marquee",
+	          "style": {
+	            "width": 700,
+	            "height": function () {return this.marquee.height*2},
+	            "backgroundColor": "rgb(223,240,216)",
+	            "borderRadius": 8,
+	            "paddingLeft": 10,
+	            "paddingRight": 10
+	          },
+	          "attr": {
+	            "step": function () {return this.marquee.height*2},
+	            "count": function () {return this.marquee.list.length},
+	            "interval": function () {return this.marquee.interval},
+	            "duration": function () {return this.marquee.duration}
+	          },
+	          "children": [
+	            {
+	              "type": "div",
+	              "repeat": function () {return this.marquee.list},
+	              "style": {
+	                "height": function () {return this.marquee.height*this.marquee.length},
+	                "paddingTop": function () {return this.marquee.height*0.5},
+	                "paddingBottom": function () {return this.marquee.height*0.5},
+	                "overflow": "hidden"
+	              },
+	              "children": [
+	                {
+	                  "type": "text",
+	                  "style": {
+	                    "height": function () {return this.marquee.height},
+	                    "color": "rgb(60,118,61)",
+	                    "fontSize": 28
+	                  },
+	                  "attr": {
+	                    "value": function () {return this.text}
+	                  }
+	                }
+	              ]
+	            }
+	          ]
+	        }
+	      ]
+	    }
+	  ]
+	}
+
+/***/ },
+
+/***/ 27:
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = function(module, exports, __weex_require__){'use strict';
+
+	__webpack_require__(4);
+
+	module.exports = {
+	  data: function () {return {
+	    marquee: {
+	      height: 30,
+	      duration: 1500,
+	      interval: 2000,
+	      list: [{ text: 'Introducing Bots on Messenger' }, { text: 'Capturing 3D 360-Stereo VR Video' }, { text: 'The Future of Video on Facebook' }, { text: 'Announcing Vue.js 2.0' }, { text: 'Not Your Average Virtual-DOM' }, { text: 'Templates, JSX, or Hyperscript?' }]
+	    }
+	  }},
+	  ready: function ready() {
+	    this.initMarquee('marquee');
+	  },
+	  methods: {
+	    initMarquee: function initMarquee(id) {
+	      var self = this;
+
+	      var $marquee = this.$vm(id);
+	      $marquee.$on('change', function () {
+	        console.log('marquee change');
+	      });
+	    }
+	  }
+	};}
+	/* generated by weex-loader */
+
+
+/***/ }
+
+/******/ });

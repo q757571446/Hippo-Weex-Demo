@@ -1,0 +1,37 @@
+<template>
+	<list>
+		<!-- <refresh-header>
+		</refresh-header> -->
+		<cell class="cell">
+			<text if="{{(tabType==0|tabType==5)}}" repeat="{{blockData}}">有声观点|文字观点</text>
+			<text if="{{(tabType==1)}}" repeat="{{blockData}}">活动</text>
+			<text if="{{(tabType==2)}}" repeat="{{blockData}}">新闻</text>
+			<report-item if="{{(tabType==3)}}" repeat="{{blockData}}">
+			</report-item>
+			<text if="{{(tabType==4)}}" repeat="{{blockData}}">研究员</text> 
+		</cell>
+		<!-- <refresh-bottom>
+		</refresh-bottom> -->
+	</list>
+</template>
+<style>
+	.container{
+		
+	}
+	.cell {
+		
+	}
+</style>
+<script>
+	require('./item/report-item.we');
+	module.exports = {
+		data: {
+			tabType:'',
+			blockData: [],
+		},
+
+		created: function(){
+			console.log('reportH', this.tabType);
+		}
+	}
+</script>

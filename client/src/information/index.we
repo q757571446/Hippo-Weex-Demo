@@ -1,0 +1,122 @@
+<template>
+	<div>
+		<wxc-panel style="margin:20;" type="info" title="设置标题" border="2">
+			<div style="margin: 10; flex-direction: row; justify-content: space-between;">
+				<wxc-button size="small" style="" type="success" value="左边" onclick="setNavBarLeftItem"></wxc-button>
+				<wxc-button size="small" style="" type="success" value="中间" onclick="setNavBarTitle"></wxc-button>
+				<wxc-button size="small" style="" type="success" value="右边" onclick="setNavBarRightItem"></wxc-button>
+			</div>
+			<div style="margin: 10; flex-direction: row; justify-content: space-between;">
+				<wxc-button size="middle" style="" type="success" value="全部" onclick="setNavBarMoreItem"></wxc-button>
+				<wxc-button size="middle" style="" type="success" value="清除" onclick="clearNavBarMoreItem"></wxc-button>
+			</div>
+			
+		</wxc-panel>
+
+		
+		<wxc-panel style="margin:20;" type="info" title="界面跳转" border="2">
+			<div style="margin: 10; flex-direction: row; justify-content: space-between;">
+				<wxc-button size="middle" style="" type="success" value="跳转Native" onclick="pushNative"></wxc-button>
+				<wxc-button size="middle" style="" type="success" value="跳转Weex" onclick="pushWeex"></wxc-button>
+			</div>
+		</wxc-panel>
+
+		<wxc-panel style="margin:20;" type="info" title="带参跳转" border="2">
+			<div style="margin: 10; flex-direction: row; justify-content: space-between;">
+				<wxc-button size="middle" style="" type="success" value="跳转Native" onclick="pushNativeByData"></wxc-button>
+				<wxc-button size="middle" style="" type="success" value="跳转Weex" onclick="pushWeexByData"></wxc-button>
+			</div>
+		</wxc-panel>
+	</div>
+</template>
+<script>
+	var router = require('../router.js');
+	var navigator = require('@weex-module/WeexNavigator');
+	require('weex-components');
+	module.exports = {
+	  	data: {
+	  	},
+
+	  	methods: {
+	  		setNavBarLeftItem: function(){
+	  			var leftItem = {
+					'left-item-title': 'leftText',
+					'left-item-color': '#ffffff',
+					'left-item-image': 'app://icon_book',
+				}
+				//image
+				//application>>> app://icon_book
+				//file>>> file://icon_setting
+				//net>>> http://xxx
+				navigator.setNavBarLeftItem(leftItem, function(){});
+			},
+			setNavBarTitle: function(){
+				var title = {
+					'title': "Title",
+				}
+				navigator.setNavBarTitle(title, function(){});
+			},
+			setNavBarRightItem: function(){
+				var rightItem = {
+					'right-item-title': 'leftText',
+					'right-item-color': '#ffffff',
+					'right-item-image': 'app://icon_setting',
+				}
+				navigator.setNavBarRightItem(rightItem, function(){});
+			},
+
+			setNavBarMoreItem: function(){
+				var moreItem = {
+					'title': "Title",
+					'left-item-title': 'leftText',
+					'left-item-color': '#ffffff',
+					'left-item-image': 'app://icon_book',
+					'right-item-title': 'leftText',
+					'right-item-color': '#ffffff',
+					'right-item-image': 'app://icon_setting',
+				}
+				navigator.setNavBarMoreItem(moreItem, function(){});
+			},
+
+			clearNavBarMoreItem: function(){
+				navigator.clearNavBarMoreItem();
+			},
+
+			pushNative: function(){
+				var params = {
+					url: router.getComponent(this, "/login"),
+				}
+				navigator.push(params,function(){});
+			},
+
+			pushWeex: function(){
+				var params = {
+					url: router.getComponent(this, "/person"),
+				}
+				navigator.push(params,function(){});
+			},
+
+			pushNativeByData: function(){
+				var params = {
+					url: router.getComponent(this, "/test"),
+					translate: {
+						name: "kevin",
+						country: "china",
+					}
+				}
+				navigator.push(params,function(){});
+			},
+
+			pushWeexByData: function(){
+				var params = {
+					url: router.getComponent(this, "/manager"),
+					translate: {
+						name: "kevin",
+						country: "china",
+					}
+				}
+				navigator.push(params,function(){});
+			},
+	  	}
+	}
+</script>

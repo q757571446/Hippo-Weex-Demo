@@ -1,0 +1,54 @@
+<template>
+	<scroller>
+		<wxc-panel style="margin:20;" type="info" title="初始化入口文件..." border="2">
+			<wxc-tip style="margin-bottom: 10;" repeat="{{v in paths}}" type="success" value="{{v}}"></wxc-tip>
+			<div style="margin: 10; flex-direction: row; justify-content: space-between;">
+				<wxc-button size="middle" style="" type="success" value="进入主页" onclick="goHome"></wxc-button>
+				<wxc-button size="middle" style="" type="success" value="所有页面" onclick="showAll"></wxc-button>
+			</div>
+		</wxc-panel>
+	</scroller>
+</template>
+<script>
+//此文件是应用程序的入口文件，在这里管理一级目录的入口情况
+  var router = require('./router.js');
+  var navigator = require('@weex-module/WeexNavigator');
+  require('weex-components');
+  module.exports = {
+  	data: {
+  		paths: [],
+  		tabs: [
+  			'/recommend',
+  			'/information',
+  			'/cloud',
+  			'/group',
+  			'/person',
+  		],
+  	},
+
+  	created: function(e){
+  		this.paths = this.getRealPath(this.tabs);
+  	},
+
+  	methods: {
+  		getRealPath: function(tabs){
+  			var paths = [];
+  			for(var key in tabs){
+  				paths[key] = router.getComponent(this, tabs[key]);
+  			}
+  			return paths;
+  		},
+
+  		goHome: function(){
+  			navigator.goHome(this.paths);
+  		},
+
+  		showAll: function(){
+  			var params = {
+  				url: router.getComponent(this,'/manager'),
+  			}
+  			navigator.push(params,function(){});
+  		}
+  	}
+  }
+</script>

@@ -1,0 +1,67 @@
+<template>
+	<div class="item">
+		<div class="left">
+			<image style="width: 130; height: 130;" src="{{authorPhotoUrl}}"></image>
+			<!-- <circle-image radius="65" image="{{authorPhotoUrl}}"></circle-image> -->
+		</div>
+		<div class="right">
+			<div class="right_top">
+				<text style="font-size: 32;lines: 2; color: #383838;">{{detail}}</text>
+			</div>
+			<div class="right_bottom">
+				<text style="font-size: 28; color: #BFBFBF;">{{date}}</text>
+				<text style="font-size: 28; color: #789DAO;">{{company}}</text>
+				<text style="font-size: 28; color: #BFBFBF;">{{readTimes}}</text>
+			</div>
+		</div>
+	</div>
+</template>
+
+<style>
+	.item {
+		flex-direction: row;
+		padding: 30;
+		align-items: center;
+		border-top-width: 1.5;
+		border-bottom-width: 1.5;
+		border-color: #f2f2f2;
+	}
+		.left {
+			margin-right: 30;
+		}
+		.right {
+			flex-direction: column;
+			height: 132;
+			flex: 1;
+		}
+			.right_top {
+			}
+			.right_bottom {
+				flex-direction: row;
+				position: absolute;
+				bottom: 0;
+				width: 326;
+				justify-content: space-between;
+			}
+</style>
+<script>
+	require('../../../person/circle-image.we');
+	var moment = require('moment');
+	module.exports = {
+		data: {
+			
+		},
+		computed: {
+	    	date: {
+	    		get: function(){
+	    			return moment(this.pubDate).startOf('day').fromNow();
+	    		}
+	    	},
+	    	detail: {
+	    		get: function(){
+	    			return this.title+": "+this.body;
+	    		}
+	    	}
+	    },
+	}
+</script>

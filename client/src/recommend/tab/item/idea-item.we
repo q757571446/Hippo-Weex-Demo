@@ -1,0 +1,76 @@
+<template>
+	<div class="container">
+		<div class="header">
+			<div class="header_left">
+				<text style="font-size: 32; color: #000; lines: 2;">{{title}}</text>
+				<text style="font-size: 26; color: #8c8c8c; lines: 3; margin-top: 22; margin-bottom: 22;">{{body}}</text>
+			</div>
+			
+			<image style="width: 170; height: 170;  background-color: #e0eadb;"></image>
+		</div>
+
+		<div class="bottom">
+			<div class="bottom left">
+				<circle-image radius="30" image="{{authorPhotoUrl}}"></circle-image>
+                <text style="font-size: 26; color: #878787; margin-left: 20;">{{authorName}}</text>
+			</div>
+			<div class="bottom right">
+				<div class="textImg">
+                    <image class="smallImg" src="{{shareImg}}"></image>
+                    <text style="font-size: 26; color: #878787; margin-left: 12;">{{readTimes}}</text>
+                </div>
+            
+                <div class="textImg">
+                    <image class="smallImg" src="{{commentImg}}"></image>
+                    <text style="font-size: 26; color: #878787; margin-left: 12;">{{effection}}</text>
+                </div>
+			</div>
+		</div>
+	</div>
+</template>
+<style>
+	.container {
+		width: 750;
+		padding-left: 30;
+		padding-right: 30;
+		padding-top: 22;
+		padding-bottom: 22;
+		border-color: #f2f2f2;
+		border-top-width: 1.5;
+		border-bottom-width: 1.5;
+	}
+		.header {
+			flex-direction: row;
+			justify-content: space-between;
+		}
+			.header_left {
+				width: 505;
+			}
+		.bottom {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+			.avatar {
+				width: 60;
+				height: 60;
+			}
+			.textImg {
+			    flex-direction: row;
+			    margin-left: 40;
+			}
+			.smallImg {
+			    width: 32;
+			    height: 32;
+			}
+</style>
+<script>
+	require('../../../person/circle-image.we');
+	module.exports = {
+	    data: {
+	    	itemAvatar: 'app://idea_avatar',
+	      	shareImg: 'app://icon_share',
+	      	commentImg: 'app://icon_comment',
+	    },
+	}
+</script>

@@ -1,0 +1,64 @@
+<template>
+    <div>
+    	<banner></banner>
+	    <div style="padding-top: 20; padding-bottom: 30; border-bottom-width:3; border-color: #f2f2f2;" class="item">
+	    	<div style="flex:1; align-items: center;" repeat="v in middle">
+	    		<image class="headerImg" src="{{v.image}}"></image>
+	    		<text style="margin-top: 20;" class="content">{{v.content}}</text>
+	    	</div>
+	    </div>
+	    <div style="padding-top: 33; padding-bottom: 33; border-bottom-width:3; border-color: #f2f2f2;"  class="item">
+	    	<div style="flex:1; justify-content: center;" class="item" repeat="v in bottom">
+	    		<image class="leftImg" src="{{v.image}}"></image>
+	    		<text style="margin-left: 20;" class="content">{{v.content}}</text>
+	    	</div>
+	    </div>
+    </div>
+</template>
+<style>
+	.item {
+		flex-direction: row;
+	}
+	.content {
+		font-size: 28;
+	}
+	.headerImg {
+		width: 90;
+		height: 90;
+	}
+	.leftImg {
+		width: 40;
+		height: 40;
+	}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+    	middle: [
+    		{
+    			image: "app://icon_daca",
+    			content: "新闻聚合",
+    		},
+    		{
+    			image: "app://icon_daca",
+    			content: "投研大咖说",
+    		},
+			{
+    			image: "app://icon_daca",
+    			content: "热点专题",
+    		}
+    	],
+    	bottom: [
+    		{
+    			image: "app://group_cloud",
+    			content: "聚合研报",
+    		},
+    		{
+    			image: "app://group_cloud",
+    			content: "组合推荐",
+    		},
+    	]
+    }
+  }
+</script>

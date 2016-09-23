@@ -1,0 +1,62 @@
+<template>
+  <div class="container" style="background-color: #fff" onclick="jump">
+    <div style="height: 135;flex-direction: row; margin-left: 20; margin-right: 20; align-items: center;">
+        <image style="width: 80; height: 80; resize: contain;" src={{imageLeft}}></image>
+        <div style="margin-left: 32; flex: 1;">
+            <text style="flex: 1;color: #000; font-size: 30;">{{textHeader}}</text>
+           <!--  <text style="flex: 1; color: #ababab; font-size: 26;" if="{{isShown}}">{{textBottom}}</text> -->
+        </div>
+       <image style="width: 22; height: 38; resize: contain;" src={{imageRight}}></image>
+    </div>
+     <div style="margin-left: 140; background-color: #f2f2f2; width:750; height: 2;">
+     </div>
+  </div>
+</template> 
+<style>
+
+</style>
+
+<script>
+  var router = require('../router.js');
+
+  module.exports = {
+    data: {
+      isShown: true,
+      imageLeft: '',
+      textHeader: '',
+      textBottom: '',
+      imageRight:'app://icon_enter',
+      url: '',
+      subUrl: [
+       
+      ],
+    },
+
+    created: function() {
+      //将真正的url映射出来
+      var realSub = this.subUrl;
+
+      for(var key in realSub){
+        realSub[key] = router.getComponent(this,this.url + this.subUrl[key]);
+      }
+
+      this.url = router.getComponent(this,this.url);
+      this.subUrl = realSub;
+    },
+    
+
+    methods: {
+      jump: function(){
+        this.$dispatch('onItemClick', {
+          index: this.$index, 
+          url: this.url, 
+          translate:{tabUri: this.subUrl,}
+        });
+      },
+
+      replaceValue: function(){
+
+      },
+    },
+  }
+</script>

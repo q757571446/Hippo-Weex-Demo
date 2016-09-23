@@ -1,0 +1,63 @@
+<template>
+	<container>
+		<div>
+			<image class="background" src="app://bg_person_header"></image>
+			<div class="header">
+				<circle-image image="{{avatar}}"></circle-image>
+				<text style="font-size: 34; color: #fff; margin-top: 20;">王者</text>
+			</div>
+		</div>
+		<tab-page page-contents="{{tabItems}}">
+		</tab-page>
+	</container>
+</template>
+<style>
+	.header {
+		height: 240;
+		position: absolute;
+		top: 0;
+		opacity: 1;
+		left:310;
+		right: 310;
+		align-items: center;
+		padding-top: 30;
+		padding-bottom: 32;
+	}
+	.background {
+		height: 240;
+		width: 750;
+	}
+</style>
+<script>
+	require('../circle-image.we');
+	var router = require('../../router.js');
+	module.exports = {
+		data: {
+      		avatar: 'app://icon_logo',
+      		tabs: [
+				'/recommend',
+		        '/information',
+		        '/cloud',
+		        '/group',
+		        '/person',
+      		],
+			tabItems: [
+
+			],
+		},
+
+	    methods: {
+	      getRealPath: function(tabs){
+	        var paths = [];
+	        for(var key in tabs){
+	          paths[key] = router.getComponent(this, tabs[key]);
+	        }
+	        return paths;
+	      },
+	    },
+
+		created: function(){
+			this.tabItems = this.getRealPath(this.tabs);
+		},
+	}
+</script>

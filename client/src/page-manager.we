@@ -1,0 +1,57 @@
+<template>
+	<div>
+    <div style="margin: 10; flex-direction: row; justify-content: center;">
+      <wxc-button size="middle" style="" type="success" value="进入主页" onclick="goHome"></wxc-button>
+    </div>
+    <wxc-panel style="margin:20;" type="info" title="参数携带" border="2">
+      <wxc-tip style="margin-bottom: 10;" type="success" value="{{name}}"></wxc-tip>
+      <wxc-tip style="margin-bottom: 10;" type="success" value="{{country}}"></wxc-tip>
+    </wxc-panel>
+      
+		<tree-view items="{{routers}}">
+		</tree-view>
+	</div>
+</template>
+
+<script>
+  var navigator = require('@weex-module/WeexNavigator');
+  require('weex-components');
+  var router = require('./router.js');
+  module.exports = {
+    data: {
+      routers: '',
+      paths: [],
+      tabs: [
+        '/recommend',
+        '/information',
+        '/cloud',
+        '/group',
+        '/person',
+      ],
+    },
+
+
+    methods: {
+      goHome: function(){
+        navigator.goHome(this.paths);
+      },
+
+      getRealPath: function(tabs){
+        var paths = [];
+        for(var key in tabs){
+          paths[key] = router.getComponent(this, tabs[key]);
+        }
+        return paths;
+      },
+    },
+
+    created: function() {
+    	this.routers = router.getRouters();
+      this.paths = this.getRealPath(this.tabs);
+
+ 
+    },
+
+
+  }
+</script>

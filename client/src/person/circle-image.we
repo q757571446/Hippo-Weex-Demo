@@ -1,0 +1,22 @@
+<template>
+    <container>
+        <image style="border-radius: {{radius}};width: {{radius*2}}; height: {{radius*2}};" src="{{image}}"></image>
+    <container>
+</template>
+
+<style>
+</style>
+
+<script>
+    module.exports = {
+        data: {
+            radius: 66,
+            image: 'app://icon_logo',
+        },
+
+        created: function(e){
+            console.log('image', this.image);
+        }
+    }
+
+</script>

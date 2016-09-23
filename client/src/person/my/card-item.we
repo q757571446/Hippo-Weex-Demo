@@ -1,0 +1,16 @@
+<template>
+    <cell class="cell" onclick="oncellclick" rownumber={{id}} repeat="{{shopList}}" scope="{{scopeValue}}" append="tree"
+          composite={{composite}}>
+      <div class="shopDiv">
+        <div class="cardHeader" style="flex-direction:row;">
+        	<text style="font-size: 32; color: #000;">今日十大机构论市：抓住投资机遇监管层释放重要信号</text>
+        </div>
+        <div class="cardBody" style="flex-direction:column;">
+          
+        </div>
+        <div class="cardFooter" style="flex-direction:row;margin-top:10;margin-left:10;justify-content:flex-end;">
+          
+        </div>
+      </div>
+    </cell>
+</template>
