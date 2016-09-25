@@ -33,7 +33,7 @@ var routers = {
     recommend: {
         name: '推荐',
         component: function(platform,platformUrl,baseUrl){
-            return baseUrl + 'information/index.js'; 
+            return baseUrl + 'examples/index.js'
         }
     },
     information: {
